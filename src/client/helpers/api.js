@@ -53,4 +53,5 @@ export function getApiPromise(method, data) {
 
     return response.json();
   })
+  .then(data => JSON.parse(data));
 };
