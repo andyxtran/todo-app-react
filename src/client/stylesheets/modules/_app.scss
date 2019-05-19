@@ -1,3 +1,30 @@
 // App module.
 .app {
+  display: flex;
+  flex-direction: column;
+
+  form {
+    padding: 3rem;
+    text-align: right;
+
+    input {
+      height: 30px;
+      width: 450px;
+      border-radius: 6px;
+      padding: 0.25rem;
+      font-family: $roboto;
+      font-weight: 400;
+      font-size: 1.25rem;
+      color: $darkgray;
+      padding-left: 1rem;
+    }
+
+    ::placeholder {
+      font-family: $roboto;
+      font-weight: 300;
+      font-size: 1.25rem;
+      color: $gray;
+    }
+
+  }
 }

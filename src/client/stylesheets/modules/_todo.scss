@@ -1,12 +1,51 @@
 // Todo module.
 .todo {
-  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  padding: 1.5rem;
+  margin-left: 4rem;
+  border-bottom: 1px solid $lightgray;
+  font-family: $roboto;
+  font-weight: 400;
+  color: $darkgray;
+  font-size: 1.5rem;
+
+  &:hover {
+    .button {
+      opacity: 1;
+    }
+  }
 
   &--status-complete {
-    text-decoration: line-through;
+    :first-child {
+      text-decoration: line-through;
+    }
   }
 
   &--filtered {
     display: none;
   }
+
+  :first-child{
+    cursor: pointer;
+  }
+
+  :last-child {
+    margin-left: auto;
+  }
+
+  .button {
+    cursor: pointer;
+    background: none;
+    border: 0;
+    line-height: 1;
+    opacity: 0;
+    font-family: $roboto;
+    font-size: 1rem;
+    color: $gray;
+    &:hover {
+      color: $red;
+    }
+  }
+
 }

@@ -1,10 +1,28 @@
 // Navbar module
 .navbar {
+  padding: 0.75rem;
+  background-color: map-get($colors, lightgray);
+  font-family: $roboto;
+  font-weight: 700;
+  font-size: 0.90rem;
+
+  :first-child {
+    padding-left: 4rem;
+  }
+
+  * {
+    padding-right: 1rem;
+  }
+
   &__item {
+    cursor: pointer;
     text-decoration: none;
+    color: $gray;
   }
 
   &__item--active {
     font-weight: 700;
+    color: $darkgray;
   }
+
 }
