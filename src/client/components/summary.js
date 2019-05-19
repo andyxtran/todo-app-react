@@ -12,16 +12,9 @@ const Summary = ({ todos, updateTodos }) => {
     return todo.status !== 'complete' ? true : false;
   }).length;
 
-  const displayText = (num) => {
-    switch(num) {
-      case 0:
-        return `No tasks`;
-      case 1:
-        return `1 task remaining`;
-      default:
-        return `${num} tasks remaining`;
-    }
-  }
+  const text = remainingTodos === 1 
+    ? `1 task remaining` 
+    : `${remainingTodos} tasks remaining`;
 
   const putTodos = (todos) => {
     updateTodos([...todos])
@@ -42,8 +35,6 @@ const Summary = ({ todos, updateTodos }) => {
     
     putTodos(completedTodos);
   };
-
-  const text = displayText(remainingTodos);
 
   return (
     <div className={baseCls}>

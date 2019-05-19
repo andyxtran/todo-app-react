@@ -5,7 +5,7 @@ $darkgray: #7b7b7b;
 $gray: #bababa;
 $lightgray: #e7e7e7;
 $red: #FF0000;
-
+$white: #FFF;
 // Application colors.
 $colors: (
   ui-transparent: transparent,
@@ -16,6 +16,7 @@ $colors: (
   gray: $gray,
   lightgray: $lightgray,
   red: $red,
+  white: $white,
 );
 
 // Fonts.
