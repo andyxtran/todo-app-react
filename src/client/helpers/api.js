@@ -54,10 +54,10 @@ export function getApiPromise(method, data) {
     return response.json();
   })
   .then(data => {
-    if (Array.isArray(data)) {
+    if (Array.isArray(data) || (typeof data === 'object' && data !== null)) {
       return data;
     }
-  
+
     return JSON.parse(data)
   });
 };

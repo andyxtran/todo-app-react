@@ -53,28 +53,45 @@ app.post('/todos', (req, res) => {
 });
 
 app.delete('/todos/:id', (req, res) => {
-  const deleteId = req.body.data.id;
+  const deleteData = req.body.data;
 
-  if (!deleteId) {
+  if (!deleteData) {
     res.status(400).send({ message: 'delete data required' });
 
     return;
   }
 
-  const deleteFromDb = (targetId, db) => {
+  const deleteFromDb = (data, db) => {
     for (let i = 0; i < db.length; i++) {
-      if (db[i].id === targetId) {
-        db.splice(i, i + 1);
+      if (db[i].id === data.id) {
+        db.splice(i, 1);
       } 
     }
   };
 
-  deleteFromDb(deleteId, todos);
-  res.status(201).json(deleteId);
+  deleteFromDb(deleteData, todos);
+  res.status(201).json(deleteData);
 });
 
 app.put('/todos/:id', (req, res) => {
-  res.status(500).send({ message: 'not implemented' });
+  const putData = req.body.data;
+
+  if (!putData) {
+    res.status(400).send({ message: 'put ID required' });
+
+    return;
+  }
+
+  const updateToDb = (data, db) => {
+    for (let i = 0; i < db.length; i++) {
+      if (db[i].id === data.id) {
+        db[i].status = db[i].status === 'complete' ? 'active' : 'complete';
+      }
+    }
+  }
+
+  updateToDb(putData, todos);
+  res.status(201).json(putData);
 });
 
 // Node server.
