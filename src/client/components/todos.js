@@ -43,7 +43,7 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
    */
   const deleteTodo = json => {
     const index = todos.findIndex(todo => {
-      return todo.id === json.id;
+      return todo.id === json;
     });
 
     updateTodos(

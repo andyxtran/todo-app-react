@@ -14,6 +14,7 @@ const todos = [
   { id: 1, text: 'Hello, world!' },
   { id: 2, text: 'Pick up groceries', status: 'complete' }
 ];
+let todoId = 3;
 
 app.get('/', (req, res) => {
   const bundle = `//${req.hostname}:8080/public/bundle.js`;
@@ -43,7 +44,7 @@ app.post('/todos', (req, res) => {
     return;
   }
 
-  const id = todos.length + 1;
+  const id = todoId++;
   const newTodo = { id, text, status: 'active' };
 
   todos.push(newTodo);
@@ -52,7 +53,24 @@ app.post('/todos', (req, res) => {
 });
 
 app.delete('/todos/:id', (req, res) => {
-  res.status(500).send({ message: 'not implemented' });
+  const deleteId = req.body.data.id;
+
+  if (!deleteId) {
+    res.status(400).send({ message: 'delete data required' });
+
+    return;
+  }
+
+  const deleteFromDb = (targetId, db) => {
+    for (let i = 0; i < db.length; i++) {
+      if (db[i].id === targetId) {
+        db.splice(i, i + 1);
+      } 
+    }
+  };
+
+  deleteFromDb(deleteId, todos);
+  res.status(201).json(deleteId);
 });
 
 app.put('/todos/:id', (req, res) => {
