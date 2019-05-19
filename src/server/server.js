@@ -75,7 +75,6 @@ app.delete('/todos/:id', (req, res) => {
 
 app.put('/todos/:id', (req, res) => {
   const putData = req.body.data;
-
   if (!putData) {
     res.status(400).send({ message: 'put ID required' });
 
@@ -85,7 +84,7 @@ app.put('/todos/:id', (req, res) => {
   const updateToDb = (data, db) => {
     for (let i = 0; i < db.length; i++) {
       if (db[i].id === data.id) {
-        db[i].status = db[i].status === 'complete' ? 'active' : 'complete';
+        db[i].status = data.status;
       }
     }
   }
