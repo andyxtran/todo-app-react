@@ -39,7 +39,11 @@ const Summary = ({ todos, updateTodos }) => {
   return (
     <div className={baseCls}>
       {text}
-      <Button text="Complete All" onClick={onClickCompleteAll.bind(this, todos)} />
+      <Button 
+        className="complete-all-button"
+        text="Complete All"
+        onClick={onClickCompleteAll.bind(this, todos)}
+      />
     </div>
   )
 }

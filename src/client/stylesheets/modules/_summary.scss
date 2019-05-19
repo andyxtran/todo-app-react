@@ -4,4 +4,15 @@
   font-weight: 300;
   padding: 1.5rem 1.5rem 1.5rem 4.75rem;
 
+  .complete-all-button {
+    cursor: pointer;
+    background: none;
+    border: 0;
+    line-height: 1;
+    font-family: $roboto;
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: $blue;
+    margin-left: 0.75rem;
+  }
 }
