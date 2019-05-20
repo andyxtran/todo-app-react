@@ -30,7 +30,7 @@ const defaultProps = {
  * Todos component
  * @returns {ReactElement}
  */
-const Todos = ({ filterBy, todos, updateTodos, archiveTodo }) => {
+const Todos = ({ filterBy, todos, updateTodos }) => {
   /**
    * Base CSS class
    */
@@ -92,7 +92,6 @@ const Todos = ({ filterBy, todos, updateTodos, archiveTodo }) => {
   const onClickTodo = todo => {
     const newTodo = Object.assign({}, todo);
     newTodo.status = todo.status === 'complete' ? 'active' : 'complete';
-    newTodo.archive = false;
 
     api('PUT', newTodo, putTodo);
   }
@@ -100,6 +99,13 @@ const Todos = ({ filterBy, todos, updateTodos, archiveTodo }) => {
   const onClickArchive = todo => {
     const newTodo = Object.assign({}, todo);
     newTodo.archive = true;
+
+    api('PUT', newTodo, putTodo);
+  }
+
+  const onClickUnarchive = todo => {
+    const newTodo = Object.assign({}, todo);
+    newTodo.archive = false;
 
     api('PUT', newTodo, putTodo);
   }
@@ -117,9 +123,6 @@ const Todos = ({ filterBy, todos, updateTodos, archiveTodo }) => {
     return todos.map(todo => {
       let filtered;
       switch (filterBy) {
-        case 'all':
-          filtered = todo.archive;
-          break;
         case 'active':
           filtered = todo.status === 'complete';
           break;
@@ -130,8 +133,8 @@ const Todos = ({ filterBy, todos, updateTodos, archiveTodo }) => {
           filtered = !todo.archive;
           break;
         default:
-          filtered = false;
-      }
+          filtered = todo.archive || false;
+        }
 
       return (
         <Todo
@@ -140,7 +143,9 @@ const Todos = ({ filterBy, todos, updateTodos, archiveTodo }) => {
           onClickDelete={onClickDelete.bind(this, todo)}
           onClickTodo={onClickTodo.bind(this, todo)}
           onClickArchive={onClickArchive.bind(this, todo)}
+          onClickUnarchive={onClickUnarchive.bind(this, todo)}
           status={todo.status}
+          archive={todo.archive}
           text={todo.text}
         />
       );

@@ -85,6 +85,7 @@ app.put('/todos/:id', (req, res) => {
     for (let i = 0; i < db.length; i++) {
       if (db[i].id === data.id) {
         db[i].status = data.status;
+        db[i].archive = data.archive; 
       }
     }
   }

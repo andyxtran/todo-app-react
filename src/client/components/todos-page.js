@@ -99,10 +99,6 @@ class TodosPage extends React.Component {
     this.setState({ todos });
   }
 
-  archiveTodo() {
-    console.log('arhiving todo');
-  }
-
   /**
    * Render
    * @returns {ReactElement}
