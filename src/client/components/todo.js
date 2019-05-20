@@ -34,7 +34,7 @@ const defaultProps = {
  * Todo component
  * @returns {ReactElement}
  */
-const Todo = ({ filtered, onClickDelete, onClickTodo, status, text }) => {
+const Todo = ({ filtered, onClickDelete, onClickTodo, onClickArchive, status, text }) => {
   /**
    * Base CSS class
    */
@@ -43,12 +43,20 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, status, text }) => {
   const todoCls = baseCls
     + (status === 'complete' ? ' todo--status-complete' : '')
     + (filtered ? ' todo--filtered' : '');
+  
   const isCompleted = todoCls === 'todo todo--status-complete' ? true : false; 
-  console.log(isCompleted);
+
   return (
     <li className={todoCls}>
       <TodoLink text={text} onClick={onClickTodo} />
-      { isCompleted && <Button className="archive-button" text="Archive" /> }
+      { 
+        isCompleted &&
+        <Button 
+          className="archive-button"
+          text="Archive"
+          onClick={onClickArchive}
+        /> 
+      }
       <Button className="delete-button" text="delete" onClick={onClickDelete} />
     </li>
   );

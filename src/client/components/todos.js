@@ -30,7 +30,7 @@ const defaultProps = {
  * Todos component
  * @returns {ReactElement}
  */
-const Todos = ({ filterBy, todos, updateTodos }) => {
+const Todos = ({ filterBy, todos, updateTodos, archiveTodo }) => {
   /**
    * Base CSS class
    */
@@ -97,6 +97,13 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
     api('PUT', newTodo, putTodo);
   }
 
+  const onClickArchive = todo => {
+    const newTodo = Object.assign({}, todo);
+    newTodo.archive = true;
+
+    api('PUT', newTodo, putTodo);
+  }
+
   /**
    * Renders All Todos
    *
@@ -110,11 +117,17 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
     return todos.map(todo => {
       let filtered;
       switch (filterBy) {
+        case 'all':
+          filtered = todo.archive;
+          break;
         case 'active':
           filtered = todo.status === 'complete';
           break;
         case 'completed':
-          filtered = todo.status !== 'complete';
+          filtered = todo.status !== 'complete' || todo.archive;
+          break;
+        case 'archived':
+          filtered = !todo.archive;
           break;
         default:
           filtered = false;
@@ -126,6 +139,7 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
           filtered={filtered}
           onClickDelete={onClickDelete.bind(this, todo)}
           onClickTodo={onClickTodo.bind(this, todo)}
+          onClickArchive={onClickArchive.bind(this, todo)}
           status={todo.status}
           text={todo.text}
         />
