@@ -76,7 +76,7 @@ const Todo = ({
 
   return (
     <li className={todoCls}>
-      <TodoLink text={text} onClick={isClickable} />
+      <TodoLink text={text} onClick={isClickable} status={status} />
       {archiveButton}
       <Button className="delete-button" text="delete" onClick={onClickDelete} />
     </li>

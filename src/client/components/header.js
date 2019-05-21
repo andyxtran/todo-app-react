@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 /**
  * Header component
  */
-const Header = () => {
+const Header = ({ onClickFilter }) => {
   /**
    * Base CSS class
    * @returns {ReactElement}
@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <div className={baseCls}>
       <h1>
-        <Link to="/">MyTodos</Link>
+        <Link to="/" onClick={() => onClickFilter('all')}>MyTodos</Link>
       </h1>
     </div>
   )

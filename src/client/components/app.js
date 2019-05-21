@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import TodosPage from './todos-page';
-import Header from './header';
 
 /**
  * Prop Types
@@ -29,8 +28,6 @@ const App = ({ children }) => {
   return (
     <BrowserRouter>
       <div className={baseCls}>
-        <Header />
-
         <Route path="/">
           <TodosPage />
         </Route>

@@ -35,6 +35,12 @@ app.get('/todos/:id', (req, res) => {
   res.json(JSON.stringify(todos[index]));
 });
 
+app.get('*', (req, res) => {
+  const bundle = `//${req.hostname}:8080/public/bundle.js`;
+
+  res.render('index', { bundle });
+});
+
 app.post('/todos', (req, res) => {
   const text = req.body.data.text;
 

@@ -6,7 +6,7 @@
   margin-left: 4rem;
   border-bottom: 1px solid $lightgray;
   font-family: $roboto;
-  font-weight: 400;
+  font-weight: 300;
   color: $darkgray;
   font-size: 1.5rem;
 
@@ -19,6 +19,7 @@
   &--status-complete {
     :first-child {
       text-decoration: line-through;
+      color: $lightgray;
     }
   }
 
@@ -26,7 +27,7 @@
     display: none;
   }
 
-  :first-child{
+  :nth-child(-n + 2) {
     cursor: pointer;
   }
 
@@ -35,40 +36,20 @@
   }
 
   .delete-button {
-    cursor: pointer;
+    @include button(none, $gray, 1rem, 0);
     background: none;
-    border: 0;
-    line-height: 1;
-    opacity: 0;
-    font-family: $roboto;
-    font-size: 1rem;
-    color: $gray;
     &:hover {
       color: $red;
     }
   }
 
   .archive-button {
-    cursor: pointer;
-    background-color: $green;
-    border: 0;
-    border-radius: 0.25rem;
-    line-height: 1;
-    font-family: $roboto;
-    font-size: 0.75rem;
-    color: $white;
+    @include button($green);
     margin-left: 1rem;
   }
 
   .unarchive-button {
-    cursor: pointer;
-    background-color: $gray;
-    border: 0;
-    border-radius: 0.25rem;
-    line-height: 1;
-    font-family: $roboto;
-    font-size: 0.75rem;
-    color: $white;
+    @include button($gray);
     margin-left: 1rem;
   }
 }

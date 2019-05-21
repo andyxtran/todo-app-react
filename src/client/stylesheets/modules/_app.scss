@@ -11,10 +11,11 @@
       height: 30px;
       width: 450px;
       border-radius: 6px;
-      padding: 0.25rem;
+      border: 1px solid $lightgray;
+      padding: 0.50rem;
       font-family: $roboto;
-      font-weight: 400;
-      font-size: 1.25rem;
+      font-weight: 300;
+      font-size: 1.50rem;
       color: $darkgray;
       padding-left: 1rem;
     }
@@ -25,6 +26,6 @@
       font-size: 1.25rem;
       color: $gray;
     }
-
   }
+
 }

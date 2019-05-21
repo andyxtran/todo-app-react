@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { api, getApiPromise } from '../helpers/api';
+import Header from './header';
 import Button from './button';
 import Navbar from './navbar';
 import TodoForm from './todo-form';
 import TodoLink from './todo-link';
 import Todos from './todos';
 import Summary from './summary';
+
 
 /**
  * TodosPage component
@@ -106,6 +108,7 @@ class TodosPage extends React.Component {
   render() {
     return (
       <div className={this.baseCls}>
+        <Header onClickFilter={this.setFilterBy}/>
         <Navbar filterBy={this.state.filterBy} onClickFilter={this.setFilterBy} />
         <Summary todos={this.state.todos} updateTodos={this.updateTodos}/>
         <TodoForm onSubmit={this.addTodo} />

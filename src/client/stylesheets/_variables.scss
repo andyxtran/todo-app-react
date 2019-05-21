@@ -22,3 +22,16 @@ $colors: (
 
 // Fonts.
 $roboto: 'Roboto', sans-serif;
+
+// Button Styling.
+@mixin button($bgColor: none, $color: $white, $fsize: 0.75rem, $opacity: 1) {
+  cursor: pointer;
+  background-color: $bgColor;
+  color: $color;
+  border: 0;
+  border-radius: 0.25rem;
+  line-height: 1;
+  font-family: $roboto;
+  font-size: $fsize;
+  opacity: $opacity;
+}

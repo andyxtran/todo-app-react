@@ -9,6 +9,7 @@ const noop = () => {};
  */
 const propTypes = {
   onClick: PropTypes.func,
+  checked: PropTypes.string,
   text: PropTypes.string,
 };
 
@@ -18,6 +19,7 @@ const propTypes = {
  */
 const defaultProps = {
   onClick: noop,
+  checked: '',
   text: '',
 };
 
@@ -25,15 +27,18 @@ const defaultProps = {
  * Link component
  * @returns {ReactElement}
  */
-const TodoLink = ({ text, onClick }) => {
+const TodoLink = ({ text, onClick, status }) => {
   /**
    * Base CSS class
    */
   const baseCls = 'todo-link';
 
+  const isChecked = status === 'complete' ? 'checked' : '';
+
   return (
     <div className={baseCls} onClick={onClick}>
-     {text}
+      <input type="checkbox" checked={isChecked} onChange={onClick}/>
+      <label>{text}</label>
     </div>
   );
 };
