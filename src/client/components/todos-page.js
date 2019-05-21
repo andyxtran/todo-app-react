@@ -57,6 +57,19 @@ class TodosPage extends React.Component {
    */
   componentDidMount() {
     api('GET', null, this.updateTodos);
+    this.updatePage();
+  }
+
+  updatePage() {
+    if (window.location.href.endsWith('/active')) {
+      this.setFilterBy('active');
+    } else if (window.location.href.endsWith('/completed')) {
+      this.setFilterBy('completed');
+    } else if (window.location.href.endsWith('/archived')){
+      this.setFilterBy('archived');
+    } else {
+      return;
+    }
   }
 
   /**

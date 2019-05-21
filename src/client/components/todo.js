@@ -73,7 +73,6 @@ const Todo = ({
       />;
   }
 
-
   return (
     <li className={todoCls}>
       <TodoLink text={text} onClick={isClickable} status={status} />
