@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import Checkbox from '@material-ui/core/Checkbox';
+import green from '@material-ui/core/colors/green';
 
 const noop = () => {};
 
@@ -37,7 +39,7 @@ const TodoLink = ({ text, onClick, status }) => {
 
   return (
     <div className={baseCls} onClick={onClick}>
-      <input type="checkbox" checked={isChecked} onChange={onClick}/>
+      <Checkbox checked={isChecked} onChange={onClick} />
       <label>{text}</label>
     </div>
   );
