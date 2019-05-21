@@ -96,6 +96,12 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
     api('PUT', newTodo, putTodo);
   }
 
+  /**
+   * Click handler for clicking on the archive button
+   * Sets an archive property to true
+   *
+   * @param {object} todo - Todo object
+   */
   const onClickArchive = todo => {
     const newTodo = Object.assign({}, todo);
     newTodo.archive = true;
@@ -103,6 +109,11 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
     api('PUT', newTodo, putTodo);
   }
 
+  /**
+   * Click handler for clicking on the unarchive button
+   * Sets an archive property to false
+   * @param {object} todo - Todo object
+   */
   const onClickUnarchive = todo => {
     const newTodo = Object.assign({}, todo);
     newTodo.archive = false;

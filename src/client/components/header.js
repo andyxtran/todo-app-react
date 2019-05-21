@@ -14,7 +14,9 @@ const Header = ({ onClickFilter }) => {
   return (
     <div className={baseCls}>
       <h1>
-        <Link to="/" onClick={() => onClickFilter('all')}>MyTodos</Link>
+        <Link to="/" onClick={() => onClickFilter('all')}>
+          MyTodos
+        </Link>
       </h1>
     </div>
   )

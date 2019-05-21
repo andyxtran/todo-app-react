@@ -32,7 +32,6 @@ const Navbar = ({ filterBy, onClickFilter }) => {
    */
   const baseCls = 'navbar'
 
-  
   let allLinkCls = `${baseCls}__item`;
   allLinkCls += filterBy === 'all' || window.location.href.endsWith('3000/') 
     ? ` ${baseCls}__item--active`
@@ -40,12 +39,12 @@ const Navbar = ({ filterBy, onClickFilter }) => {
 
   let activeLinkCls = `${baseCls}__item`;
   activeLinkCls += filterBy === 'active' || window.location.href.endsWith('/active')
-   ? ` ${baseCls}__item--active` 
+   ? ` ${baseCls}__item--active`
    : '';
 
   let completedLinkCls = `${baseCls}__item`;
   completedLinkCls += filterBy === 'completed' || window.location.href.endsWith('/completed')
-    ? ` ${baseCls}__item--active` 
+    ? ` ${baseCls}__item--active`
     : '';
 
   let archivedLinkCls = `${baseCls}__item`;

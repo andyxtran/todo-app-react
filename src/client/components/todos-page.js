@@ -60,6 +60,9 @@ class TodosPage extends React.Component {
     this.updatePage();
   }
 
+  /**
+   * Filter page based on the url endpoint
+   */
   updatePage() {
     if (window.location.href.endsWith('/active')) {
       this.setFilterBy('active');
